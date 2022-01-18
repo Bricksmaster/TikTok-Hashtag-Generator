@@ -1,5 +1,8 @@
+
 public class Main {
     static java.util.Scanner scanner = new java.util.Scanner((System.in));
+    //static ArrayList<Hashtag> hashtags = new ArrayList<>();
+    static String[]hashtags = new String[5];
 
     static void firstHashtag(){
         System.out.print("Enter First Custom Hashtag: ");
@@ -7,7 +10,7 @@ public class Main {
         String firstCustomHashtag = firstCustomHashtagInput.toLowerCase();
         String firstFinalHashtag = "#" + firstCustomHashtag;
         System.out.println(firstFinalHashtag);
-        Boolean firstHashtagUsed = true;
+
     }
 
     static void secondHashtag(){
@@ -45,6 +48,7 @@ public class Main {
             System.out.println("    T  -> Enter Third Custom Hashtag");
             System.out.println("    O  -> Print Hashtags");
             System.out.println("\n  E  -> Exit program");
+
 
 
             System.out.print("\nChoice: ");
