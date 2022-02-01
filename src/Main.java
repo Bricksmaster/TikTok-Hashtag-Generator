@@ -14,7 +14,7 @@ public class Main {
         String firstCustomHashtagInput = scanner.nextLine();
         String firstCustomHashtag = firstCustomHashtagInput.toLowerCase();
         String firstFinalHashtag = "#" + firstCustomHashtag;
-        hashtags[1] = firstFinalHashtag;
+        hashtags[0] = firstFinalHashtag;
 
     }
 
@@ -23,7 +23,7 @@ public class Main {
         String secondCustomHashtagInput = scanner.nextLine();
         String secondCustomHashtag = secondCustomHashtagInput.toLowerCase();
         String secondFinalHashtag = "#" + secondCustomHashtag;
-        hashtags[2] = secondFinalHashtag;
+        hashtags[1] = secondFinalHashtag;
     }
 
     static void thirdHashtag(){
@@ -31,7 +31,7 @@ public class Main {
         String thirdCustomHashtagInput = scanner.nextLine();
         String thirdCustomHashtag = thirdCustomHashtagInput.toLowerCase();
         String thirdFinalHashtag = "#" + thirdCustomHashtag;
-        hashtags[3] = thirdFinalHashtag;
+        hashtags[2] = thirdFinalHashtag;
     }
 
     static void printHashtags(){
@@ -41,44 +41,41 @@ public class Main {
         try {
             Scanner myReader = new Scanner(f);
 
-            while (myReader.hasNextLine()){
-                String line = myReader.nextLine();
+           String line = myReader.nextLine();
 
 
-                if (hashtags[1].equals("")){
+                if (hashtags[0] == null){
+                    hashtags[0] = line;
+                    neededHashtags =- 1;
+                }
+                if (hashtags[1] == null){
                     hashtags[1] = line;
                     neededHashtags =- 1;
                 }
-                if (hashtags[2].equals("")){
+                if (hashtags[2] == null){
                     hashtags[2] = line;
                     neededHashtags =- 1;
                 }
-                if (hashtags[3].equals("")){
-                    hashtags[3] = line;
-                    neededHashtags =- 1;
-                }
 
+                hashtags[3] = line;
                 hashtags[4] = line;
-                hashtags[5] = line;
-            }
 
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-
+        for (String c : hashtags){
+            System.out.println(c);
+        }
 
     }
 
 
-
-    //Current method does not work, because booleans and other variables can't be used for a status.
-
     public static void main(String[] args) {
-//        for (String c : hashtags){
-//            c = "";
-//        }
+        for (String c : hashtags){
+            c = "";
+        }
 
         boolean endProgram = false;
         while (!endProgram) {
