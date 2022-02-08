@@ -1,9 +1,7 @@
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     static java.util.Scanner scanner = new java.util.Scanner((System.in));
@@ -33,6 +31,8 @@ public class Main {
     }
 
     static void printHashtags(){
+        //Cleanup
+        Arrays.fill(hashtags, null);
 
 
             File file = new File("src/hashtags.txt");
@@ -114,6 +114,7 @@ public class Main {
             System.out.println("    O  -> Print Hashtags");
             System.out.println("    E  -> Exit program\n");
             //User Message if custom hashtag is used
+            //Does not make so much sense after first use :(
 
             if (hashtags[0] != null){
                 System.out.println("First Custom Hashtag Used!");
