@@ -1,19 +1,19 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     static java.util.Scanner scanner = new java.util.Scanner((System.in));
-    //static ArrayList<Hashtag> hashtags = new ArrayList<>();
     static String[]hashtags = new String[5];
 
 
     static void firstHashtag(){
         System.out.print("Enter First Custom Hashtag: ");
         String firstCustomHashtagInput = scanner.nextLine();
-        String firstCustomHashtag = firstCustomHashtagInput.toLowerCase();
-        String firstFinalHashtag = "#" + firstCustomHashtag;
+        String firstFinalHashtag = firstCustomHashtagInput.toLowerCase();
         hashtags[0] = firstFinalHashtag;
 
     }
@@ -21,61 +21,85 @@ public class Main {
     static void secondHashtag(){
         System.out.print("Enter Second Custom Hashtag: ");
         String secondCustomHashtagInput = scanner.nextLine();
-        String secondCustomHashtag = secondCustomHashtagInput.toLowerCase();
-        String secondFinalHashtag = "#" + secondCustomHashtag;
+        String secondFinalHashtag = secondCustomHashtagInput.toLowerCase();
         hashtags[1] = secondFinalHashtag;
     }
 
     static void thirdHashtag(){
         System.out.print("Enter Third Custom Hashtag: ");
         String thirdCustomHashtagInput = scanner.nextLine();
-        String thirdCustomHashtag = thirdCustomHashtagInput.toLowerCase();
-        String thirdFinalHashtag = "#" + thirdCustomHashtag;
+        String thirdFinalHashtag = thirdCustomHashtagInput.toLowerCase();
         hashtags[2] = thirdFinalHashtag;
     }
 
     static void printHashtags(){
-       int neededHashtags = 5;
 
-       File f = new File("src/hashtags.txt");
+
+            File file = new File("src/hashtags.txt");
+        LineNumberReader lineNumberReader = null;
         try {
-            Scanner myReader = new Scanner(f);
-
-           String line = myReader.nextLine();
-
-
-                if (hashtags[0] == null){
-                    hashtags[0] = line;
-                    neededHashtags =- 1;
-                }
-                if (hashtags[1] == null){
-                    hashtags[1] = line;
-                    neededHashtags =- 1;
-                }
-                if (hashtags[2] == null){
-                    hashtags[2] = line;
-                    neededHashtags =- 1;
-                }
-
-                hashtags[3] = line;
-                hashtags[4] = line;
-
-
+            lineNumberReader = new LineNumberReader(new FileReader(file));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        try {
+                lineNumberReader.skip(Long.MAX_VALUE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            int countLines = lineNumberReader.getLineNumber();
+            try {
+                lineNumberReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("Total lines read: " + countLines);
+
+        Random r = new Random();
+
+
+        try {
+            if (hashtags[0] == null){
+                int random = r.nextInt(countLines - 1) + 1;
+                String line = Files.readAllLines(Paths.get("src/hashtags.txt")).get(random);
+                hashtags[0] = line;
+            }
+            if (hashtags[1] == null){
+                int random = r.nextInt(countLines - 1) + 1;
+                String line = Files.readAllLines(Paths.get("src/hashtags.txt")).get(random);
+                hashtags[1] = line;
+            }
+            if (hashtags[2] == null){
+                int random = r.nextInt(countLines - 1) + 1;
+                String line = Files.readAllLines(Paths.get("src/hashtags.txt")).get(random);
+                hashtags[2] = line;
+            }
+
+            if (hashtags[3] == null){
+                int random = r.nextInt(countLines - 1) + 1;
+                String line = Files.readAllLines(Paths.get("src/hashtags.txt")).get(random);
+                hashtags[3] = line;
+            }
+            if (hashtags[4] == null){
+                int random = r.nextInt(countLines - 1) + 1;
+                String line = Files.readAllLines(Paths.get("src/hashtags.txt")).get(random);
+                hashtags[4] = line;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         for (String c : hashtags){
-            System.out.println(c);
+            System.out.println("#" + c.toLowerCase());
         }
 
     }
 
 
     public static void main(String[] args) {
-        for (String c : hashtags){
-            c = "";
-        }
 
         boolean endProgram = false;
         while (!endProgram) {
@@ -88,18 +112,19 @@ public class Main {
             System.out.println("    S  -> Enter Second Custom Hashtag");
             System.out.println("    T  -> Enter Third Custom Hashtag");
             System.out.println("    O  -> Print Hashtags");
-            System.out.println("\n  E  -> Exit program");
+            System.out.println("    E  -> Exit program\n");
             //User Message if custom hashtag is used
 
-//            if (!hashtags[1].equals("")){
-//                System.out.println("First Custom Hashtag Used = Yes");
-//            }
-//            if (!hashtags[2].equals("")){
-//                System.out.println("Second Custom Hashtag Used = Yes");
-//            }
-//            if (!hashtags[3].equals("")){
-//                System.out.println("Third Custom Hashtag Used = Yes");
-//            }
+            if (hashtags[0] != null){
+                System.out.println("First Custom Hashtag Used!");
+            }
+            if (hashtags[1] != null){
+                System.out.println("Second Custom Hashtag Used!");
+            }
+            if (hashtags[2] != null){
+                System.out.println("Third Custom Hashtag Used!");
+            }
+
 
             System.out.print("\nChoice: ");
             String input2 = scanner.nextLine().toUpperCase();
