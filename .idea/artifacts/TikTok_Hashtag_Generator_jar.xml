@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TikTok-Hashtag-Generator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TikTok_Hashtag_Generator_jar</output-path>
+    <root id="archive" name="TikTok-Hashtag-Generator.jar">
+      <element id="module-output" name="TikTok-Hashtag-Generator" />
+    </root>
+  </artifact>
+</component>
